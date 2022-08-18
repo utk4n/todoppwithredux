@@ -8,12 +8,11 @@ import {
   editTodo,
 } from "./features/todoSlice";
 
-import { Home, Contact } from "./components/pages"; // Component Reducer :D
 
 function App() {
   const [newTodo, setNewTodo] = useState("");
   const [error, setError] = useState("");
-  const [editId, setEditId] = useState(0);
+  const [editId, setEditId] = useState(null);
   const [newEdit, setNewEdit] = useState("");
 
   const todos = useSelector((state) => state.todos);
@@ -54,7 +53,7 @@ function App() {
   const saveEditMyTodo = (todo) => {
     const newContent = { ...todo, content: newEdit };
     dispatch(editTodo(newContent));
-    setEditId(0);
+    setEditId(null);
     setError("Edit Modu Kapalı")
   };
 
